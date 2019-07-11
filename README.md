@@ -8,7 +8,7 @@ Instructions...
 
 I see something similar to the below:
 
-[[network-traffic.png|alt=Network traffic from Firefox]]
+![Network traffic tab](network-traffic.png)
 
 A completed comet callback can be seen (selected). The contents of this include a call to replace the html of the comet component.
 
