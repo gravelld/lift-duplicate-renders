@@ -1,0 +1,15 @@
+lib_managed
+
+project/boot
+
+project/build/target
+
+target
+/bin/
+.cache*
+*.db
+.classpath
+.project
+.keep
+*.log
+.settings
