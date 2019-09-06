@@ -49,7 +49,9 @@ class Boot {
       // /static path to be visible
       Menu(Loc("Static", Link(List("static"), true, "/static/index"),
 	       "Static Content")),
-    	Menu(Loc("Dupe Render", List("dupe-render"), "DupeRender", Hidden)) 
+    	Menu(Loc("Dupe Render", List("dupe-render"), "DupeRender", Hidden)), 
+    	Menu(Loc("LazyLoad Comet", List("lazyload-comet"), "LazyLoadComet", Hidden)),
+    	Menu(Loc("Comet", List("comet"), "Comet", Hidden)) 
 	  )
 
     def sitemapMutators = User.sitemapMutator
@@ -86,9 +88,14 @@ class Boot {
     LiftRules.securityRules = () => {
       SecurityRules(content = Some(ContentSecurityPolicy(
         scriptSources = List(
-            ContentSourceRestriction.Self),
+          ContentSourceRestriction.UnsafeInline,
+          ContentSourceRestriction.UnsafeEval,
+          ContentSourceRestriction.All
+),
         styleSources = List(
-            ContentSourceRestriction.Self)
+          ContentSourceRestriction.UnsafeInline,
+          ContentSourceRestriction.All
+            )
             )))
     }
     // Make a transaction span the whole HTTP request
