@@ -14,7 +14,6 @@ object LazyLoadComet {
   
   def cometNs = <div data-lift="comet?type=LazyLoadComet"/>
   def render = "*" #> {
-    val evaluated = S.eagerEval(cometNs)
-    LazyLoad.render(Replace(_, evaluated))    
+    LazyLoad.render(Replace(_, S.eagerEval(cometNs)))    
   }
 }
