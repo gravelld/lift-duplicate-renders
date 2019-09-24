@@ -6,6 +6,7 @@ import util._
 import util.Helpers._
 import net.liftweb.builtin.snippet.LazyLoad
 import net.liftweb.http.js.JsCmds.Replace
+import net.liftweb.http.S
 
 object LazyLoadComet {
   
@@ -13,6 +14,7 @@ object LazyLoadComet {
   
   def cometNs = <div data-lift="comet?type=LazyLoadComet"/>
   def render = "*" #> {
-    LazyLoad.render(Replace(_, cometNs))    
+    val evaluated = S.eagerEval(cometNs)
+    LazyLoad.render(Replace(_, evaluated))    
   }
 }
